@@ -11,6 +11,7 @@ public class LancementJeu {
     public static void main(String args[]) {
         System.out.println("test ET WIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIN");
         System.out.println("Double win !!");
+        System.out.println("OH");
         new jeu.MenuJeu("");
     }
 }
