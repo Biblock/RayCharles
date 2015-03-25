@@ -1,5 +1,6 @@
 package view;
 
+import jeu.FenetreSimple;
 import devintAPI.MenuAbstrait;
 
 public class MainMenu extends MenuAbstrait {
@@ -10,26 +11,27 @@ public class MainMenu extends MenuAbstrait {
 
 	@Override
 	protected String[] nomOptions() {
-		// TODO Auto-generated method stub
-		return null;
+		String[] noms = {"Jouer","Quitter"};
+		return noms;	
 	}
 
 	@Override
 	protected void lancerOption(int i) {
-		// TODO Auto-generated method stub
-
+		switch (i){  
+			case 0 : new FenetreSimple("Fenêtre simple");break;
+			case 1 : System.exit(0);
+			default: System.err.println("action non définie");
+		}
 	}
 
 	@Override
 	protected String wavAccueil() {
-		// TODO Auto-generated method stub
-		return null;
+		return "../ressources/sons/accueil.wav";
 	}
 
 	@Override
 	protected String wavRegleJeu() {
-		// TODO Auto-generated method stub
-		return null;
+		return "../ressources/sons/accueil.wav";
 	}
 
 }
