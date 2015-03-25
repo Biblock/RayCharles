@@ -61,9 +61,9 @@ public class FichierScore extends FenetreAbstraite implements ActionListener{
     	text += "Jean-Paul 20\n";
        	text +="Hélène : 15\n";
 		text +="Catherine : 16\n\n";
-    	text+= "Cliquez sur le bouton du haut et vérifiez si le fichier a été créé\n";
-       	text+= "Cliquez sur le bouton du bas pour lire les scores qui ont été sauvegardés\n\n";
-       	text+= "Le code est dans jeu.Fichier.java\n";
+    	text += "Cliquez sur le bouton du haut et vérifiez si le fichier a été créé\n";
+       	text += "Cliquez sur le bouton du bas pour lire les scores qui ont été sauvegardés\n\n";
+       	text += "Le code est dans jeu.Fichier.java\n";
       	text += "Lisez le code de la méthode actionPerformed.";
 
      	JTextArea lb1 = new JTextArea (text); 
