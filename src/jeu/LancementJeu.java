@@ -1,5 +1,6 @@
 package jeu;
 
+import view.MainMenu;
 import engine.Game;
 
 /** classe pour lancer le jeu
@@ -14,6 +15,6 @@ public class LancementJeu {
         System.out.println("test ET WIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIN");
         System.out.println("Double win !!");
         System.out.println("OH");
-        new Game();
+        MainMenu menu = new MainMenu("THE GAME");
     }
 }

@@ -18,7 +18,7 @@ public class MainMenu extends MenuAbstrait {
 	@Override
 	protected void lancerOption(int i) {
 		switch (i){  
-			case 0 : new FenetreSimple("Fenêtre simple");break;
+			case 0 : new GameView("WELCOME TO THE GAME");break;
 			case 1 : System.exit(0);
 			default: System.err.println("action non définie");
 		}

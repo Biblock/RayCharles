@@ -5,17 +5,20 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import devintAPI.FenetreAbstraite;
+import engine.Game;
+import engine.IGame;
 
 public class GameView extends FenetreAbstraite implements ActionListener {
 
+	private IGame game;
+	
 	public GameView(String title) {
 		super(title);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	protected void init() {
-		
+		game = new Game();
 	}
 
 	@Override
@@ -25,13 +28,11 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 
 	@Override
 	public void changeColor() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void changeSize() {
-		// TODO Auto-generated method stub
 		
 	}
 
