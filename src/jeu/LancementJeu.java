@@ -1,5 +1,7 @@
 package jeu;
 
+import engine.Game;
+
 /** classe pour lancer le jeu
  * Elle crée simplement une instance de MenuJeu
  * 
@@ -12,6 +14,6 @@ public class LancementJeu {
         System.out.println("test ET WIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIN");
         System.out.println("Double win !!");
         System.out.println("OH");
-        new jeu.MenuJeu("");
+        new Game();
     }
 }
