@@ -52,7 +52,10 @@ public class Game implements IGame {
 			System.out.println(i.getUrl());
 		}
 	}
-	
+	public void generateSequence(int i) {
+		addRandomSound(i);
+		playAllSounds();
+	}
 	private void addRandomSound(int i) {
 		for (int j = 0; j < i; ++j) {
 			Random rand = new Random();
