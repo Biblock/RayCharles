@@ -70,9 +70,8 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				System.out.println("YEAH");
-			}
+			game.checkKeyCode(e.getKeyCode());
+	
 		}
 
 
