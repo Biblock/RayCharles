@@ -82,7 +82,7 @@ public class Game implements IGame {
 
 	public void checkKeyCode(int keyCode) {
 		KeySound toCheck = KeySound.getKeySound(keyCode);
-		if (toCheck.getSound().equals(usedSounds.get(soundSequence.get(cursor)))) {
+		if (toCheck != null && toCheck.getSound().equals(usedSounds.get(soundSequence.get(cursor)))) {
 			voix.stop();
 			voix.playWav(toCheck.getSound().getUrl(), true);
 		} else {
