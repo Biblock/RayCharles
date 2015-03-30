@@ -69,21 +69,23 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 	class RecognizedKeyListener implements KeyListener {
 
 		@Override
-		public void keyPressed(KeyEvent arg0) {
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				System.out.println("YEAH");
+			}
+		}
+
+
+		@Override
+		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
-		public void keyReleased(KeyEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
 
 		@Override
-		public void keyTyped(KeyEvent key) {
-			if(key.getKeyCode() == key.VK_LEFT)
-			System.out.println("Youpi !");
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
 			
 		}
 		
