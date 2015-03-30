@@ -21,7 +21,8 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 	@Override
 	protected void init() {
 		game = new Game();
-		game.generateSequence(2);
+		game.generateSequence(3);
+		
 	}
 	
 	
