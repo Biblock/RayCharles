@@ -1,20 +1,21 @@
 package engine;
 
 import engine.Sound;
-import javafx.scene.input.KeyCode;
+
+import java.awt.event.KeyEvent;
 
 public enum KeySound {
-    LEFT(Sound.BOING, KeyCode.LEFT), DOWN(Sound.FUNNYSLIP, KeyCode.DOWN), RIGHT(Sound.METALCLANG, KeyCode.RIGHT);
-    private final KeyCode keyCode;
+    LEFT(Sound.BOING, KeyEvent.VK_UP), DOWN(Sound.FUNNYSLIP, KeyEvent.VK_UP), RIGHT(Sound.METALCLANG, KeyEvent.VK_UP);
+    private final int keyCode;
     private final Sound sound;
 
 
-    KeySound(Sound sound, KeyCode keyCode) {
+    KeySound(Sound sound, int keyCode) {
         this.sound = sound;
         this.keyCode = keyCode;
     }
 
-    public KeyCode getKeyCode() {
+    public int getKeyCode() {
         return keyCode;
     }
 
