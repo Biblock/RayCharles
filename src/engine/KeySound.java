@@ -23,4 +23,21 @@ public enum KeySound {
     public Sound getSound() {
         return sound;
     }
+
+    public static KeySound getKeySound(Sound sound) {
+        for (KeySound ks : KeySound.values()) {
+            if (ks.sound.equals(sound)) {
+                return ks;
+            }
+        }
+        return null;
+    }
+    public static KeySound getKeySound(int keyCode) {
+        for (KeySound ks : KeySound.values()) {
+            if (ks.keyCode == keyCode) {
+                return ks;
+            }
+        }
+        return null;
+    }
 }
