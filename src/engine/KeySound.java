@@ -10,7 +10,6 @@ public enum KeySound {
     private final int keyCode;
     private final Sound sound;
 
-
     KeySound(Sound sound, int keyCode) {
         this.sound = sound;
         this.keyCode = keyCode;
