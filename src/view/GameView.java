@@ -4,13 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
 import engine.Game;
 import engine.IGame;
 
 public class GameView extends FenetreAbstraite implements ActionListener {
 
-	private IGame game;
+	private Game game;
+	private SIVOXDevint voix;
 	
 	public GameView(String title) {
 		super(title);
@@ -19,7 +21,10 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 	@Override
 	protected void init() {
 		game = new Game();
+		game.generateSequence(2);
 	}
+	
+	
 
 	@Override
 	protected String wavAide() {
