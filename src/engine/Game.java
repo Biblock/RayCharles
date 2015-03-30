@@ -1,12 +1,11 @@
 package engine;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import t2s.SIVOXDevint;
+import view.GameView;
 import devintAPI.Preferences;
 
 public class Game implements IGame {
@@ -17,6 +16,7 @@ public class Game implements IGame {
 	private SIVOXDevint voix;
 
 	public Game() {
+		
 		soundSequence = new ArrayList<Integer>();
 		usedSounds = new ArrayList<Sound>();
 		usedSounds.add(Sound.BOING);
@@ -27,6 +27,7 @@ public class Game implements IGame {
 		voix = Preferences.getData().getVoice();
 		System.out.println("HEYYYYYYY");
 		System.out.println("DONE");
+		cursor = 0;
 		
 	}
 
@@ -78,6 +79,18 @@ public class Game implements IGame {
 	public void LoadSounds(String pathFolder, ArrayList<String> Sounds) {
 
 	}
+
+	public void checkKeyCode(int keyCode) {
+		KeySound toCheck = KeySound.getKeySound(keyCode);
+		if (toCheck.getSound().equals(usedSounds.get(soundSequence.get(cursor)))) {
+			voix.stop();
+			voix.playWav(toCheck.getSound().getUrl(), true);
+		} else {
+			voix.playWav(Sound.FAIL.getUrl(), true);
+		}
+	}
+
+	
 	
 	
 
