@@ -82,7 +82,9 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 
 		@Override
 		public void keyTyped(KeyEvent key) {
-			System.out.println(key.getKeyChar());
+			if(key.getKeyCode() == key.VK_LEFT)
+			System.out.println("Youpi !");
+			
 		}
 		
 	}

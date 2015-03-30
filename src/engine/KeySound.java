@@ -1,6 +1,8 @@
 package engine;
 
 
+import engine.Sound;
+
 import java.awt.event.KeyEvent;
 
 public enum KeySound {

@@ -1,5 +1,7 @@
 package engine;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,6 +27,7 @@ public class Game implements IGame {
 		voix = Preferences.getData().getVoice();
 		System.out.println("HEYYYYYYY");
 		System.out.println("DONE");
+		
 	}
 
 	@Override
@@ -75,5 +78,7 @@ public class Game implements IGame {
 	public void LoadSounds(String pathFolder, ArrayList<String> Sounds) {
 
 	}
+	
+	
 
 }
