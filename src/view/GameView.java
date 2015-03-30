@@ -3,6 +3,7 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
@@ -16,6 +17,7 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 	
 	public GameView(String title) {
 		super(title);
+		this.addKeyListener(new RecognizedKeyListener());
 	}
 
 	@Override
@@ -63,5 +65,26 @@ public class GameView extends FenetreAbstraite implements ActionListener {
     	   	voix.playText("Vous venez d'appuyer sur EFFE 5");
     	}
     }
+	
+	class RecognizedKeyListener implements KeyListener {
+
+		@Override
+		public void keyPressed(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent key) {
+			System.out.println(key.getKeyChar());
+		}
+		
+	}
 
 }
