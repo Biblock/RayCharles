@@ -95,7 +95,7 @@ public class Game implements IGame {
 			toCheck = KeySound.getKeySound(keyCode);
 		}
 		
-		if (toCheck != null) {
+		if (toCheck != null && !soundSequence.isEmpty()) {
 			if (toCheck.getSound().equals(soundSequence.get(cursor).getSound())) {
 				voix.stop();
 				voix.playWav(toCheck.getSound().getUrl());
