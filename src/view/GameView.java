@@ -43,8 +43,6 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 
 	@Override
 	protected String wavAccueil() {
-		//return Sound.FUNNYSLIP.getUrl();
-
 		return Sound.MESSAGEACCUEIL.getUrl();
 	}
 
