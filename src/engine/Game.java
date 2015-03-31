@@ -51,12 +51,19 @@ public class Game implements IGame {
 	
 	public void endGame(boolean win){
 		if(win){
-			voix.playWav("../ressources/sons/incredible.wav");
 			try {
-				Thread.sleep(3000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			voix.playWav("../ressources/sons/incredible.wav");
+
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
 			// well done sound
 			soundSequence.clear();
 			launchRound(3);
