@@ -5,6 +5,7 @@ import javax.swing.border.LineBorder;
 
 import devintAPI.FenetreAbstraite;
 import devintAPI.Preferences;
+import engine.Sound;
 
 import java.awt.*;
 import java.awt.event.*;

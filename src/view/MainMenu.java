@@ -1,5 +1,6 @@
 package view;
 
+import engine.Sound;
 import jeu.FenetreSimple;
 import devintAPI.MenuAbstrait;
 
@@ -26,12 +27,13 @@ public class MainMenu extends MenuAbstrait {
 
 	@Override
 	protected String wavAccueil() {
-		return "../ressources/sons/accueil.wav";
+		//return "../ressources/sons/accueil.wav";
+		return Sound.MESSAGEACCUEIL.getUrl();
 	}
 
 	@Override
 	protected String wavRegleJeu() {
-		return "../ressources/sons/accueil.wav";
+		return Sound.AIDEACCUEIL.getUrl();
 	}
 
 }
