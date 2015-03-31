@@ -57,6 +57,7 @@ public class Game implements IGame {
 				e.printStackTrace();
 			}
 			// well done sound
+			soundSequence.clear();
 			launchRound(3);
 		}
 	}
