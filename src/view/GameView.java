@@ -19,7 +19,6 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 		super(title);
 		this.addKeyListener(new RecognizedKeyListener());
 		game = new Game();
-		game.runGame();
 	}
 
 	@Override

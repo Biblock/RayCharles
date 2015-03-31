@@ -1,5 +1,6 @@
 package engine;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -85,7 +86,14 @@ public class Game implements IGame {
 	}
 
 	public void checkKeyCode(int keyCode) {
-		KeySound toCheck = KeySound.getKeySound(keyCode);
+		KeySound toCheck = null;
+		
+		if(keyCode == KeyEvent.VK_SPACE){
+			runGame();
+		}else{
+			toCheck = KeySound.getKeySound(keyCode);
+		}
+		
 		if (toCheck != null) {
 			if (toCheck.getSound().equals(soundSequence.get(cursor).getSound())) {
 				voix.stop();
