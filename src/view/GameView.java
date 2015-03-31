@@ -9,6 +9,7 @@ import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
 import engine.Game;
 import engine.IGame;
+import engine.Sound;
 
 public class GameView extends FenetreAbstraite implements ActionListener {
 
@@ -46,7 +47,7 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 
 	@Override
 	protected String wavAccueil() {
-		return "../ressources/sons/accueil.wav";
+		return Sound.FUNNYSLIP.getUrl();
 	}
 
 	@Override

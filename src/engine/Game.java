@@ -60,7 +60,7 @@ public class Game implements IGame {
 
 	public void generateSequence(int i) {
 		addRandomSound(i);
-		playAllSounds();
+		//playAllSounds();
 	}
 
 	private void addRandomSound(int i) {
@@ -84,9 +84,9 @@ public class Game implements IGame {
 		KeySound toCheck = KeySound.getKeySound(keyCode);
 		if (toCheck != null && toCheck.getSound().equals(usedSounds.get(soundSequence.get(cursor)))) {
 			voix.stop();
-			voix.playWav(toCheck.getSound().getUrl(), true);
+			voix.playWav(toCheck.getSound().getUrl());
 		} else {
-			voix.playWav(Sound.FAIL.getUrl(), true);
+			voix.playWav(Sound.FAIL.getUrl());
 		}
 	}
 

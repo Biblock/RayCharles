@@ -16,5 +16,6 @@ public class LancementJeu {
         System.out.println("Double win !!");
         System.out.println("OH");
         MainMenu menu = new MainMenu("THE GAME");
+//        MenuJeu mj = new MenuJeu("");
     }
 }
