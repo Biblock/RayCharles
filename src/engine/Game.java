@@ -10,14 +10,14 @@ import devintAPI.Preferences;
 
 public class Game implements IGame {
 	private static final String pathFolder = "../ressources/sons/";
-	private List<Integer> soundSequence;
+	private List<KeySound> soundSequence;
 	private int cursor;
 	private List<Sound> usedSounds;
 	private SIVOXDevint voix;
 
 	public Game() {
-		
-		soundSequence = new ArrayList<Integer>();
+
+		soundSequence = new ArrayList<KeySound>();
 		usedSounds = new ArrayList<Sound>();
 		usedSounds.add(Sound.BOING);
 		usedSounds.add(Sound.FUNNYSLIP);
@@ -25,16 +25,22 @@ public class Game implements IGame {
 
 		voix = new SIVOXDevint();
 		voix = Preferences.getData().getVoice();
-		System.out.println("HEYYYYYYY");
-		System.out.println("DONE");
 		cursor = 0;
-		
 	}
 
 	@Override
 	public boolean isCorrect(int Cursor) {
-		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String randomSoundString(String pathFolder) {
+		return null;
+	}
+
+	@Override
+	public void LoadSounds(String pathFolder, ArrayList<String> Sounds) {
+
 	}
 
 	public void initialiazeCursor() {
@@ -43,11 +49,6 @@ public class Game implements IGame {
 
 	public void incrementCursor() {
 		cursor++;
-	}
-
-	@Override
-	public String randomSoundString(String pathFolder) {
-		return null;
 	}
 
 	public void playAllSounds() {
@@ -59,39 +60,35 @@ public class Game implements IGame {
 	}
 
 	public void generateSequence(int i) {
-		addRandomSound(i);
-		//playAllSounds();
-	}
-
-	private void addRandomSound(int i) {
-		for (int j = 0; j < i; ++j) {
-			Random rand = new Random();
-			int randomNum = rand.nextInt(usedSounds.size());
-			soundSequence.add(new Integer(randomNum));
+		Random rand = new Random();
+		while ((i--) > 0) {
+			int r = rand.nextInt(KeySound.getNbSounds());
+			System.out.println(r);
+			KeySound ks = KeySound.values()[r];
+			soundSequence.add(ks);
+			System.out.println(ks);
 		}
 	}
 
-	private void addRandomSound() {
-		addRandomSound(1);
-	}
-
-	@Override
-	public void LoadSounds(String pathFolder, ArrayList<String> Sounds) {
-
-	}
+//	private void addRandomSound(int i) {
+//		Random rand = new Random();
+//		for (int j = 0; j < i; ++j) {
+//			int randomNum = rand.nextInt(usedSounds.size());
+//			soundSequence.add(new Integer(randomNum));
+//		}
+//	}
 
 	public void checkKeyCode(int keyCode) {
 		KeySound toCheck = KeySound.getKeySound(keyCode);
-		if (toCheck != null && toCheck.getSound().equals(usedSounds.get(soundSequence.get(cursor)))) {
-			voix.stop();
-			voix.playWav(toCheck.getSound().getUrl());
-		} else {
-			voix.playWav(Sound.FAIL.getUrl());
+		if (toCheck != null) {
+			if (toCheck.getSound().equals(soundSequence.get(cursor).getSound())) {
+				voix.stop();
+				voix.playWav(toCheck.getSound().getUrl());
+				cursor++;
+			} else {
+				voix.playWav(Sound.FAIL.getUrl());
+				cursor = 0;
+			}
 		}
 	}
-
-	
-	
-	
-
 }

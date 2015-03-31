@@ -8,7 +8,6 @@ import java.awt.event.KeyListener;
 import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
 import engine.Game;
-import engine.IGame;
 import engine.Sound;
 
 public class GameView extends FenetreAbstraite implements ActionListener {
@@ -25,10 +24,7 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 	protected void init() {
 		game = new Game();
 		game.generateSequence(3);
-		
 	}
-	
-	
 
 	@Override
 	protected String wavAide() {

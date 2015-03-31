@@ -32,6 +32,7 @@ public enum KeySound {
         }
         return null;
     }
+    
     public static KeySound getKeySound(int keyCode) {
         for (KeySound ks : KeySound.values()) {
             if (ks.keyCode == keyCode) {
@@ -39,5 +40,9 @@ public enum KeySound {
             }
         }
         return null;
+    }
+    
+    public static int getNbSounds(){
+    	return KeySound.values().length;
     }
 }
