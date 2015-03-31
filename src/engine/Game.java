@@ -51,6 +51,7 @@ public class Game implements IGame {
 	
 	public void endGame(boolean win){
 		if(win){
+			voix.playWav("../ressources/sons/incredible.wav");
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
