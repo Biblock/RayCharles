@@ -18,13 +18,13 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 	public GameView(String title) {
 		super(title);
 		this.addKeyListener(new RecognizedKeyListener());
+		game = new Game();
+		game.runGame();
 	}
 
 	@Override
 	protected void init() {
-		game = new Game();
-		game.generateSequence(3);
-		game.playAllSounds();
+		
 	}
 
 	@Override

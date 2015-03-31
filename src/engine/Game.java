@@ -27,6 +27,11 @@ public class Game implements IGame {
 		voix = Preferences.getData().getVoice();
 		cursor = 0;
 	}
+	
+	@Override
+	public void runGame() {
+		launchRound(3);
+	}
 
 	@Override
 	public boolean isCorrect(int Cursor) {
@@ -43,14 +48,31 @@ public class Game implements IGame {
 
 	}
 	
-	public void playAllSounds() {
-		for (Sound sound : usedSounds) {
-			voix.playWav(sound.getUrl(), true);
-
-			System.out.println(sound.getUrl());
+	public void endGame(boolean win){
+		if(win){
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			// well done sound
+			launchRound(3);
 		}
 	}
 
+	public void playSequence() {
+		for (KeySound ks : soundSequence) {
+			voix.playWav(ks.getSound().getUrl(), true);
+			System.out.println(ks.getSound().getUrl());
+		}
+	}
+
+	public void launchRound(int difficulty){
+		cursor = 0;
+		generateSequence(difficulty);
+		playSequence();
+	}
+	
 	public void generateSequence(int i) {
 		Random rand = new Random();
 		while ((i--) > 0) {
@@ -69,6 +91,8 @@ public class Game implements IGame {
 				voix.stop();
 				voix.playWav(toCheck.getSound().getUrl());
 				cursor++;
+				if(cursor == soundSequence.size())
+					endGame(true);
 			} else {
 				voix.playWav(Sound.FAIL.getUrl());
 				cursor = 0;
