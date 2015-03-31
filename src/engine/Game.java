@@ -42,20 +42,12 @@ public class Game implements IGame {
 	public void LoadSounds(String pathFolder, ArrayList<String> Sounds) {
 
 	}
-
-	public void initialiazeCursor() {
-		cursor = 0;
-	}
-
-	public void incrementCursor() {
-		cursor++;
-	}
-
+	
 	public void playAllSounds() {
-		for (Sound i : usedSounds) {
-			voix.playWav(i.getUrl(), true);
+		for (Sound sound : usedSounds) {
+			voix.playWav(sound.getUrl(), true);
 
-			System.out.println(i.getUrl());
+			System.out.println(sound.getUrl());
 		}
 	}
 
@@ -69,14 +61,6 @@ public class Game implements IGame {
 			System.out.println(ks);
 		}
 	}
-
-//	private void addRandomSound(int i) {
-//		Random rand = new Random();
-//		for (int j = 0; j < i; ++j) {
-//			int randomNum = rand.nextInt(usedSounds.size());
-//			soundSequence.add(new Integer(randomNum));
-//		}
-//	}
 
 	public void checkKeyCode(int keyCode) {
 		KeySound toCheck = KeySound.getKeySound(keyCode);
