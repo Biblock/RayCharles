@@ -14,13 +14,16 @@ public class MemoryGame implements IGame {
 	private List<KeySound> soundSequence;
 	private int cursor;
 	private int difficulty;
+	private int nbSounds;
 	private int cptround;
 	private List<Sound> usedSounds;
 	private List<Sound> winsounds;
 	private SIVOXDevint voix;
 
-	public MemoryGame() {
+	public MemoryGame(int difficulty) {
 
+		this.difficulty = difficulty;
+		
 		soundSequence = new ArrayList<KeySound>();
 		winsounds = new ArrayList<Sound>();
 		usedSounds = new ArrayList<Sound>();
@@ -63,7 +66,7 @@ public class MemoryGame implements IGame {
 	
 	@Override
 	public void runGame() {
-		difficulty = 2;
+		nbSounds = difficulty + 1;
 		cptround = 1;
 		voix.playWav("../ressources/sons/countdown321.wav", true);
 		launchRound(difficulty);
@@ -75,7 +78,7 @@ public class MemoryGame implements IGame {
 		
 		if(win){
 			
-			if(cptround % 2 == 0 && difficulty < 7)
+			if(cptround % 2 == 0 && nbSounds < ((difficulty * difficulty) + 5))
 				difficulty++;
 			cptround++;
 			try {

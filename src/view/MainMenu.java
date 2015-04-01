@@ -21,7 +21,12 @@ public class MainMenu extends MenuAbstrait {
 	@Override
 	protected void lancerOption(int i) {
 		switch (i){  
-			case 0 : new GameView("WELCOME TO THE MEMORY", new MemoryGame());break;
+			case 0 :
+				DifficultyView diffView = new DifficultyView("Choix de la difficulté");
+				int difficulty = diffView.getDifficulty();
+				if(difficulty != -1)
+					new GameView("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
+				break;
 			case 1 : new GameView("WELCOME TO THE MOSQUITO", new MosquitoGame());break;
 			case 2 : System.exit(0);
 			default: System.err.println("action non définie");
@@ -30,7 +35,6 @@ public class MainMenu extends MenuAbstrait {
 
 	@Override
 	protected String wavAccueil() {
-		//return "../ressources/sons/accueil.wav";
 		return Sound.MESSAGEACCUEIL.getUrl();
 	}
 
