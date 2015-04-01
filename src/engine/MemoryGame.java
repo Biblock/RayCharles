@@ -9,7 +9,7 @@ import t2s.SIVOXDevint;
 import view.GameView;
 import devintAPI.Preferences;
 
-public class Game implements IGame {
+public class MemoryGame implements IGame {
 	private static final String pathFolder = "../ressources/sons/";
 	private List<KeySound> soundSequence;
 	private int cursor;
@@ -19,7 +19,7 @@ public class Game implements IGame {
 	private List<Sound> winsounds;
 	private SIVOXDevint voix;
 
-	public Game() {
+	public MemoryGame() {
 
 		soundSequence = new ArrayList<KeySound>();
 		winsounds = new ArrayList<Sound>();
