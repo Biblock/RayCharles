@@ -51,8 +51,9 @@ public class MemoryGame implements IGame {
 			}
 			
 			int r = rand.nextInt(winsounds.size());
-			
-			voix.playWav(winsounds.get(r).getUrl());
+			voix.playWav(winsounds.get(r).getUrl(), true);
+			voix.playWav(Sound.COUNTDOWN321.getUrl());
+
 
 			try {
 				Thread.sleep(2000);
@@ -101,7 +102,11 @@ public class MemoryGame implements IGame {
 	@Override
 	public void checkKeyCode(int keyCode) {
 		KeySound toCheck = null;
-		
+
+		if (keyCode == KeyEvent.VK_UP) {
+			playSequence();
+		}
+
 		if(keyCode == KeyEvent.VK_SPACE){
 			runGame();
 		}else{

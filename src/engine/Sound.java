@@ -8,7 +8,7 @@ public enum Sound {
 
     WIN1("../ressources/sons/incredible.wav"),
     WIN2("../ressources/sons/cool.wav"),
-    WIN3("../ressources/564bdcd078a886b010dad0905c4c74750a4504f0"),
+    WIN3("../ressources/sons/unbelievable.wav"),
 
     COUNTDOWN321("../ressources/sons/countdown321.wav"),
     
