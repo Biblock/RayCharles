@@ -9,7 +9,7 @@ public enum KeySound {
     LEFT(Sound.BOING, KeyEvent.VK_LEFT), DOWN(Sound.FUNNYSLIP, KeyEvent.VK_DOWN), RIGHT(Sound.METALCLANG, KeyEvent.VK_RIGHT);
     private final int keyCode;
     private final Sound sound;
-
+    // TODO rajouter jouer (damien).wav, lancementjeu(damien).wav, quitter(damien).wav, regleDuJeu(damien).wav
 
     KeySound(Sound sound, int keyCode) {
         this.sound = sound;
