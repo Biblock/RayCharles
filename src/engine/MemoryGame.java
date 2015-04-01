@@ -44,21 +44,6 @@ public class MemoryGame implements IGame {
 		voix.playWav("../ressources/sons/countdown321.wav", true);
 		launchRound(difficulty);
 	}
-
-	@Override
-	public boolean isCorrect(int Cursor) {
-		return false;
-	}
-
-	@Override
-	public String randomSoundString(String pathFolder) {
-		return null;
-	}
-
-	@Override
-	public void LoadSounds(String pathFolder, ArrayList<String> Sounds) {
-
-	}
 	
 	public void endGame(boolean win){
 		Random rand = new Random();
