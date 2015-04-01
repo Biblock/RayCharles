@@ -36,35 +36,6 @@ public class MemoryGame implements IGame {
 		voix = Preferences.getData().getVoice();
 		cursor = 0;
 	}
-	
-	public void endGame(boolean win){
-		Random rand = new Random();
-		
-		if(win){
-			cptround++;
-			if(cptround % 2 == 0 && difficulty < 7)
-				difficulty++;
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			int r = rand.nextInt(winsounds.size());
-			
-			voix.playWav(winsounds.get(r).getUrl());
-
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			// well done sound
-			soundSequence.clear();
-			launchRound(difficulty);
-		}
-	}
 
 	public void playSequence() {
 		for (KeySound ks : soundSequence) {
@@ -93,16 +64,52 @@ public class MemoryGame implements IGame {
 	@Override
 	public void runGame() {
 		difficulty = 2;
-		cptround = 0;
+		cptround = 1;
 		voix.playWav("../ressources/sons/countdown321.wav", true);
 		launchRound(difficulty);
 	}
 
 	@Override
+	public void endGame(boolean win){
+		Random rand = new Random();
+		
+		if(win){
+			
+			if(cptround % 2 == 0 && difficulty < 7)
+				difficulty++;
+			cptround++;
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			int r = rand.nextInt(winsounds.size());
+			voix.playWav(winsounds.get(r).getUrl(), true);
+			voix.playWav(Sound.COUNTDOWN321.getUrl());
+
+
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			// well done sound
+			soundSequence.clear();
+			launchRound(difficulty);
+		}
+	}
+	
+	@Override
 	public void checkKeyCode(int keyCode) {
 		KeySound toCheck = null;
-		
-		if(keyCode == KeyEvent.VK_SPACE){
+
+		if (keyCode == KeyEvent.VK_UP) {
+			playSequence();
+		}
+
+		if(keyCode == KeyEvent.VK_SPACE && cptround == 0){
 			runGame();
 		}else{
 			toCheck = KeySound.getKeySound(keyCode);

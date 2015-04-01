@@ -1,5 +1,7 @@
 package view;
 
+import engine.MemoryGame;
+import engine.MosquitoGame;
 import engine.Sound;
 import jeu.FenetreSimple;
 import devintAPI.MenuAbstrait;
@@ -12,15 +14,16 @@ public class MainMenu extends MenuAbstrait {
 
 	@Override
 	protected String[] nomOptions() {
-		String[] noms = {"Jouer","Quitter"};
+		String[] noms = {"Jouer au MEMORY", "Jouer au MOSQUITO", "Quitter"};
 		return noms;	
 	}
 
 	@Override
 	protected void lancerOption(int i) {
 		switch (i){  
-			case 0 : new GameView("WELCOME TO THE GAME");break;
-			case 1 : System.exit(0);
+			case 0 : new GameView("WELCOME TO THE MEMORY", new MemoryGame());break;
+			case 1 : new GameView("WELCOME TO THE MOSQUITO", new MosquitoGame());break;
+			case 2 : System.exit(0);
 			default: System.err.println("action non définie");
 		}
 	}
