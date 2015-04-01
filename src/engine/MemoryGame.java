@@ -37,14 +37,6 @@ public class MemoryGame implements IGame {
 		cursor = 0;
 	}
 	
-	@Override
-	public void runGame() {
-		difficulty = 2;
-		cptround = 0;
-		voix.playWav("../ressources/sons/countdown321.wav", true);
-		launchRound(difficulty);
-	}
-	
 	public void endGame(boolean win){
 		Random rand = new Random();
 		
@@ -97,7 +89,16 @@ public class MemoryGame implements IGame {
 			System.out.println(ks);
 		}
 	}
+	
+	@Override
+	public void runGame() {
+		difficulty = 2;
+		cptround = 0;
+		voix.playWav("../ressources/sons/countdown321.wav", true);
+		launchRound(difficulty);
+	}
 
+	@Override
 	public void checkKeyCode(int keyCode) {
 		KeySound toCheck = null;
 		
