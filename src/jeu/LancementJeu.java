@@ -1,7 +1,7 @@
 package jeu;
 
 import view.MainMenu;
-import engine.Game;
+import engine.MemoryGame;
 
 /** classe pour lancer le jeu
  * Elle crée simplement une instance de MenuJeu

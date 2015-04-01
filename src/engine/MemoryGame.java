@@ -9,7 +9,7 @@ import t2s.SIVOXDevint;
 import view.GameView;
 import devintAPI.Preferences;
 
-public class Game implements IGame {
+public class MemoryGame implements IGame {
 	private static final String pathFolder = "../ressources/sons/";
 	private List<KeySound> soundSequence;
 	private int cursor;
@@ -19,7 +19,8 @@ public class Game implements IGame {
 	private List<Sound> winsounds;
 	private SIVOXDevint voix;
 
-	public Game() {
+	public MemoryGame() {
+
 		soundSequence = new ArrayList<KeySound>();
 		winsounds = new ArrayList<Sound>();
 		usedSounds = new ArrayList<Sound>();
@@ -36,29 +37,6 @@ public class Game implements IGame {
 		cursor = 0;
 	}
 	
-	@Override
-	public void runGame() {
-		difficulty = 2;
-		cptround = 0;
-		voix.playWav("../ressources/sons/countdown321.wav", true);
-		launchRound(difficulty);
-	}
-
-	@Override
-	public boolean isCorrect(int Cursor) {
-		return false;
-	}
-
-	@Override
-	public String randomSoundString(String pathFolder) {
-		return null;
-	}
-
-	@Override
-	public void LoadSounds(String pathFolder, ArrayList<String> Sounds) {
-
-	}
-	
 	public void endGame(boolean win){
 		Random rand = new Random();
 		
@@ -73,8 +51,8 @@ public class Game implements IGame {
 			}
 			
 			int r = rand.nextInt(winsounds.size());
+			
 			voix.playWav(winsounds.get(r).getUrl());
-			voix.playWav(Sound.COUNTDOWN321.getUrl());
 
 			try {
 				Thread.sleep(2000);
@@ -111,7 +89,16 @@ public class Game implements IGame {
 			System.out.println(ks);
 		}
 	}
+	
+	@Override
+	public void runGame() {
+		difficulty = 2;
+		cptround = 0;
+		voix.playWav("../ressources/sons/countdown321.wav", true);
+		launchRound(difficulty);
+	}
 
+	@Override
 	public void checkKeyCode(int keyCode) {
 		KeySound toCheck = null;
 		

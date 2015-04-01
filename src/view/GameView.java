@@ -7,18 +7,18 @@ import java.awt.event.KeyListener;
 
 import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
-import engine.Game;
+import engine.MemoryGame;
 import engine.Sound;
 
 public class GameView extends FenetreAbstraite implements ActionListener {
 
-	private Game game;
+	private MemoryGame game;
 	private SIVOXDevint voix;
 	
 	public GameView(String title) {
 		super(title);
 		this.addKeyListener(new RecognizedKeyListener());
-		game = new Game();
+		game = new MemoryGame();
 	}
 
 	@Override
