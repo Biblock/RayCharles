@@ -13,6 +13,8 @@ public class Game implements IGame {
 	private static final String pathFolder = "../ressources/sons/";
 	private List<KeySound> soundSequence;
 	private int cursor;
+	private int difficulty;
+	private int cptround;
 	private List<Sound> usedSounds;
 	private SIVOXDevint voix;
 
@@ -31,7 +33,10 @@ public class Game implements IGame {
 	
 	@Override
 	public void runGame() {
-		launchRound(3);
+		difficulty = 2;
+		cptround = 0;
+		voix.playWav("../ressources/sons/countdown321.wav", true);
+		launchRound(difficulty);
 	}
 
 	@Override
@@ -51,6 +56,9 @@ public class Game implements IGame {
 	
 	public void endGame(boolean win){
 		if(win){
+			cptround++;
+			if(cptround % 2 == 0 && difficulty < 7)
+				difficulty++;
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
@@ -66,7 +74,7 @@ public class Game implements IGame {
 			
 			// well done sound
 			soundSequence.clear();
-			launchRound(3);
+			launchRound(difficulty);
 		}
 	}
 
