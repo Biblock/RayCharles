@@ -16,15 +16,21 @@ public class Game implements IGame {
 	private int difficulty;
 	private int cptround;
 	private List<Sound> usedSounds;
+	private List<Sound> winsounds;
 	private SIVOXDevint voix;
 
 	public Game() {
 
 		soundSequence = new ArrayList<KeySound>();
+		winsounds = new ArrayList<Sound>();
 		usedSounds = new ArrayList<Sound>();
 		usedSounds.add(Sound.BOING);
 		usedSounds.add(Sound.FUNNYSLIP);
 		usedSounds.add(Sound.METALCLANG);
+		
+		winsounds.add(Sound.WIN1);
+		winsounds.add(Sound.WIN2);
+		winsounds.add(Sound.WIN3);
 
 		voix = new SIVOXDevint();
 		voix = Preferences.getData().getVoice();
@@ -55,6 +61,8 @@ public class Game implements IGame {
 	}
 	
 	public void endGame(boolean win){
+		Random rand = new Random();
+		
 		if(win){
 			cptround++;
 			if(cptround % 2 == 0 && difficulty < 7)
@@ -64,7 +72,10 @@ public class Game implements IGame {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			voix.playWav("../ressources/sons/incredible.wav");
+			
+			int r = rand.nextInt(winsounds.size());
+			
+			voix.playWav(winsounds.get(r).getUrl());
 
 			try {
 				Thread.sleep(2000);
