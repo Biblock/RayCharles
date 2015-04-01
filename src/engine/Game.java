@@ -20,7 +20,6 @@ public class Game implements IGame {
 	private SIVOXDevint voix;
 
 	public Game() {
-
 		soundSequence = new ArrayList<KeySound>();
 		winsounds = new ArrayList<Sound>();
 		usedSounds = new ArrayList<Sound>();
@@ -74,8 +73,8 @@ public class Game implements IGame {
 			}
 			
 			int r = rand.nextInt(winsounds.size());
-			
 			voix.playWav(winsounds.get(r).getUrl());
+			voix.playWav(Sound.COUNTDOWN321.getUrl());
 
 			try {
 				Thread.sleep(2000);
