@@ -1,11 +1,15 @@
 package engine;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import javax.swing.Timer;
 
 import devintAPI.Preferences;
 import t2s.SIVOXDevint;
@@ -16,13 +20,12 @@ public class MosquitoGame implements IGame {
 	private SIVOXDevint voix;
 	private Sound playedSound;
 	private int spaceCpt;
-	private boolean gameON;
+	private Timer timer;
 	
 	public MosquitoGame() {
 		usedSounds = new HashMap<Sound, Integer>();
 		
 		spaceCpt = -1;
-		gameON = false;
 		
 		usedSounds.put(Sound.BOING, 1);
 		usedSounds.put(Sound.FUNNYSLIP, 2);
@@ -30,17 +33,26 @@ public class MosquitoGame implements IGame {
 		
 		voix = new SIVOXDevint();
 		voix = Preferences.getData().getVoice();
+		
+		timer = new Timer(3000, new GameTimerListener());
 	}
 	
 	@Override
 	public void runGame() {
-		voix.playWav("../ressources/sons/countdown321.wav", true);
+		voix.playWav(Sound.COUNTDOWN321.getUrl(), true);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("test");
+		timer.start();
 		launchRound();
 	}
 	
 	@Override
 	public void endGame(boolean win) {
-		gameON = false;
 		
 		try {
 			Thread.sleep(500);
@@ -48,15 +60,21 @@ public class MosquitoGame implements IGame {
 			e.printStackTrace();
 		}
 		
-		voix.playWav(Sound.WIN2.getUrl());
-		
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		if(win){
+			
+			voix.playWav(Sound.WIN2.getUrl());
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			launchRound();
+		}else{
+			voix.playWav(Sound.FAIL.getUrl());
+			timer.stop();
 		}
-		
-		launchRound();
 	}
 	
 	@Override
@@ -64,12 +82,9 @@ public class MosquitoGame implements IGame {
 		if(keyCode == KeyEvent.VK_SPACE){
 			if(spaceCpt == -1)
 				runGame();
-			else if(gameON){
+			else{
 				spaceCpt++;
 				System.out.println(spaceCpt);
-				System.out.println(gameON);
-				if(spaceCpt == usedSounds.get(playedSound))
-					endGame(true);
 			}
 		}
 	}
@@ -82,6 +97,19 @@ public class MosquitoGame implements IGame {
 		Object val[] = usedSounds.keySet().toArray();
 		playedSound = (Sound)val[r];
 		voix.playWav(playedSound.getUrl());
-		gameON = true;
+		timer.restart();
 	}
+	
+	class GameTimerListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(spaceCpt != usedSounds.get(playedSound))
+				endGame(false);
+			else
+				endGame(true);
+		}
+		
+	}
+	
 }
