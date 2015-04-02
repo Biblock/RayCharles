@@ -22,9 +22,12 @@ public class MainMenu extends MenuAbstrait {
 	protected void lancerOption(int i) {
 		switch (i){  
 			case 0 :
-				DifficultyView diffView = new DifficultyView("Choix de la difficulté");
-				int difficulty = diffView.getDifficulty();
-				if(difficulty != -1)
+//				DifficultyView diffView = new DifficultyView("Choix de la difficulté");
+//				
+//				int difficulty = diffView.getDifficulty();
+//
+//				if(difficulty != -1)
+				int difficulty = 1;
 					new GameView("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
 				break;
 			case 1 : new GameView("WELCOME TO THE MOSQUITO", new MosquitoGame());break;

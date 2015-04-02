@@ -3,10 +3,12 @@ package view;
 import devintAPI.MenuAbstrait;
 import engine.MemoryGame;
 import engine.MosquitoGame;
+import engine.Sound;
 
 public class DifficultyView extends MenuAbstrait {
 
 	private int difficulty;
+	private MenuAbstrait menu;
 	
 	public DifficultyView(String title) {
 		super(title);
@@ -42,14 +44,14 @@ public class DifficultyView extends MenuAbstrait {
 
 	@Override
 	protected String wavAccueil() {
-		// TODO Message info difficulté
-		return null;
+		// TODO SON TEMPORAIRE POUR EVITER LES EXCEPTIONS
+		return Sound.WIN2.getUrl();
 	}
 
 	@Override
 	protected String wavRegleJeu() {
-		// TODO Rien ?
-		return null;
+		// TODO SON TEMPORAIRE POUR EVITER LES EXCEPTIONS
+		return Sound.WIN1.getUrl();
 	}
 
 	/**
