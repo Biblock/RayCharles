@@ -7,7 +7,6 @@ import java.awt.event.KeyListener;
 
 import devintAPI.FenetreAbstraite;
 import t2s.SIVOXDevint;
-import view.GameView.RecognizedKeyListener;
 import engine.IGame;
 import engine.Sound;
 
