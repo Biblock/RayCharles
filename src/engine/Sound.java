@@ -12,8 +12,10 @@ public enum Sound {
 
     COUNTDOWN321("../ressources/sons/countdown321.wav"),
 
-    LANCEMENTMEMORY("../ressources/sons/LancementDuJeu(Damien).wav"),
+    LANCEMENT("../ressources/sons/LancementDuJeu(Damien).wav"),
     AIDEMEMORY("../ressources/sons/RegleDuJeuMemory(Damien).wav"),
+
+    AIDEMOSQUITO("../ressources/sons/RegleDuJeuMosquitoDamien.wav"),
 
     AIDEACCUEIL("../ressources/sons/AideAccueil(Damien).wav"),
     MESSAGEACCUEIL("../ressources/sons/MessageAccueil(Damien).wav");

@@ -5,12 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.Timer;
-
 import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
 import engine.IGame;
-import engine.MemoryGame;
 import engine.Sound;
 
 public class GameView extends FenetreAbstraite implements ActionListener {
@@ -26,7 +23,7 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 
 	@Override
 	protected String wavAccueil() {
-		return Sound.LANCEMENTMEMORY.getUrl();
+		return Sound.LANCEMENT.getUrl();
 		//return game.getFirstMessage();
 	}
 
