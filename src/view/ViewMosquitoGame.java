@@ -39,7 +39,7 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 
 	@Override
 	protected String wavAide() {
-		return Sound.AIDEMEMORY.getUrl();
+		return Sound.AIDEMOSQUITO.getUrl();
 	}
 
 	@Override
