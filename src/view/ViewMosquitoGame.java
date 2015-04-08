@@ -10,12 +10,12 @@ import devintAPI.FenetreAbstraite;
 import engine.IGame;
 import engine.Sound;
 
-public class GameView extends FenetreAbstraite implements ActionListener {
+public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener {
 
 	private IGame game;
 	private SIVOXDevint voix;
 	
-	public GameView(String title, IGame game) {
+	public ViewMosquitoGame(String title, IGame game) {
 		super(title);
 		this.game = game;
 		this.addKeyListener(new RecognizedKeyListener());
