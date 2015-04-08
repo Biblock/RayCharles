@@ -107,7 +107,5 @@ public class MosquitoGame implements IGame {
 			else
 				endGame(true);
 		}
-		
 	}
-	
 }

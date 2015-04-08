@@ -11,7 +11,10 @@ public enum Sound {
     WIN3("../ressources/sons/unbelievable.wav"),
 
     COUNTDOWN321("../ressources/sons/countdown321.wav"),
-    
+
+    LANCEMENTMEMORY("../ressources/sons/LancementDuJeu(Damien).wav"),
+    AIDEMEMORY("../ressources/sons/RegleDuJeuMemory(Damien).wav"),
+
     AIDEACCUEIL("../ressources/sons/AideAccueil(Damien).wav"),
     MESSAGEACCUEIL("../ressources/sons/MessageAccueil(Damien).wav");
 
