@@ -35,7 +35,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 
 	@Override
 	protected String wavAide() {
-		return "../ressources/sons/aide.wav";
+		return Sound.AIDEMEMORY.getUrl();
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 
 	@Override
 	protected String wavAccueil() {
-		return Sound.MESSAGEACCUEIL.getUrl();
+		return Sound.LANCEMENT.getUrl();
 	}
 
 	@Override
