@@ -19,8 +19,10 @@ public class MosquitoGame implements IGame {
 	private Sound playedSound;
 	private int spaceCpt;
 	private Timer timer;
+	private int points;
 	
 	public MosquitoGame() {
+		points = 0;
 		usedSounds = new HashMap<Sound, Integer>();
 		
 		spaceCpt = -1;
@@ -60,6 +62,7 @@ public class MosquitoGame implements IGame {
 		
 		if(win){
 			
+			points += 10;
 			voix.playWav(Sound.WIN2.getUrl());
 			
 			try {
@@ -70,8 +73,9 @@ public class MosquitoGame implements IGame {
 			
 			launchRound();
 		}else{
-			voix.playWav(Sound.FAIL.getUrl());
+			voix.playWav(Sound.FAIL.getUrl(), true);
 			timer.stop();
+			voix.playShortText("Bien joué ! Votre score est de "+points + " points.");
 		}
 	}
 	
@@ -107,7 +111,5 @@ public class MosquitoGame implements IGame {
 			else
 				endGame(true);
 		}
-		
 	}
-	
 }
