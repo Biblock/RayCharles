@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import t2s.SIVOXDevint;
-import view.GameView;
+import view.ViewMosquitoGame;
 import devintAPI.Preferences;
 
 public class MemoryGame implements IGame {

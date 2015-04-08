@@ -28,9 +28,9 @@ public class MainMenu extends MenuAbstrait {
 //
 //				if(difficulty != -1)
 				int difficulty = 1;
-					new GameView("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
+				new ViewMosquitoGame("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
 				break;
-			case 1 : new GameView("WELCOME TO THE MOSQUITO", new MosquitoGame());break;
+			case 1 : new ViewMosquitoGame("WELCOME TO THE MOSQUITO", new MosquitoGame());break;
 			case 2 : System.exit(0);
 			default: System.err.println("action non définie");
 		}
