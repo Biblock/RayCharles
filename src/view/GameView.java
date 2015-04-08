@@ -5,12 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.Timer;
-
 import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
 import engine.IGame;
-import engine.MemoryGame;
 import engine.Sound;
 
 public class GameView extends FenetreAbstraite implements ActionListener {
@@ -20,8 +17,19 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 	
 	public GameView(String title, IGame game) {
 		super(title);
-		this.addKeyListener(new RecognizedKeyListener());
 		this.game = game;
+		this.addKeyListener(new RecognizedKeyListener());
+	}
+
+	@Override
+	protected String wavAccueil() {
+		return Sound.LANCEMENT.getUrl();
+		//return game.getFirstMessage();
+	}
+
+	@Override
+	protected String wavRegleJeu() {
+		return Sound.AIDEMEMORY.getUrl();
 	}
 
 	@Override
@@ -31,7 +39,7 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 
 	@Override
 	protected String wavAide() {
-		return "../ressources/sons/aide.wav";
+		return Sound.AIDEMEMORY.getUrl();
 	}
 
 	@Override
@@ -42,16 +50,6 @@ public class GameView extends FenetreAbstraite implements ActionListener {
 	@Override
 	public void changeSize() {
 		
-	}
-
-	@Override
-	protected String wavAccueil() {
-		return Sound.MESSAGEACCUEIL.getUrl();
-	}
-
-	@Override
-	protected String wavRegleJeu() {
-		return "../ressources/sons/aideF1.wav";
 	}
 
 	@Override
