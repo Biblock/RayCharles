@@ -28,7 +28,7 @@ public class MemoryGame implements IGame {
 		winsounds = new ArrayList<Sound>();
 		usedSounds = new ArrayList<Sound>();
 		usedSounds.add(Sound.BOING);
-		usedSounds.add(Sound.FUNNYSLIP);
+		usedSounds.add(Sound.POUET);
 		usedSounds.add(Sound.METALCLANG);
 		
 		winsounds.add(Sound.WIN1);

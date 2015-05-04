@@ -28,7 +28,7 @@ public class MosquitoGame implements IGame {
 		spaceCpt = -1;
 		
 		usedSounds.put(Sound.BOING, 1);
-		usedSounds.put(Sound.FUNNYSLIP, 2);
+		usedSounds.put(Sound.POUET, 2);
 		usedSounds.put(Sound.METALCLANG, 3);
 		
 		voix = new SIVOXDevint();

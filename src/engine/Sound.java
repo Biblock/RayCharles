@@ -4,6 +4,7 @@ public enum Sound {
     BOING("../ressources/sons/boing.wav"),
     FUNNYSLIP("../ressources/sons/funnySlip.wav"),
     METALCLANG("../ressources/sons/metalClang2.wav"),
+    POUET("../ressources/sons/pouet.wav"),
     FAIL("../ressources/sons/gameover.wav"),
 
     WIN1("../ressources/sons/incredible.wav"),

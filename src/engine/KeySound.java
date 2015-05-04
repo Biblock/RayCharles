@@ -6,7 +6,7 @@ import engine.Sound;
 import java.awt.event.KeyEvent;
 
 public enum KeySound {
-    LEFT(Sound.BOING, KeyEvent.VK_LEFT), DOWN(Sound.FUNNYSLIP, KeyEvent.VK_DOWN), RIGHT(Sound.METALCLANG, KeyEvent.VK_RIGHT);
+    LEFT(Sound.BOING, KeyEvent.VK_LEFT), DOWN(Sound.POUET, KeyEvent.VK_DOWN), RIGHT(Sound.METALCLANG, KeyEvent.VK_RIGHT);
     private final int keyCode;
     private final Sound sound;
     // TODO rajouter jouer (damien).wav, lancementjeu(damien).wav, quitter(damien).wav, regleDuJeu(damien).wav
