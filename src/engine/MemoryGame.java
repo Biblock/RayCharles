@@ -17,7 +17,7 @@ public class MemoryGame implements IGame {
 	private int nbSounds;
 	private int cptround;
 	private List<Sound> usedSounds;
-	private List<Sound> winsounds;
+	
 	private SIVOXDevint voix;
 
 	public MemoryGame(int difficulty) {
@@ -25,32 +25,27 @@ public class MemoryGame implements IGame {
 		this.difficulty = difficulty;
 		
 		soundSequence = new ArrayList<KeySound>();
-		winsounds = new ArrayList<Sound>();
+		
 		usedSounds = new ArrayList<Sound>();
 		usedSounds.add(Sound.BOING);
 		usedSounds.add(Sound.POUET);
 		usedSounds.add(Sound.METALCLANG);
 		
-		winsounds.add(Sound.WIN1);
-		winsounds.add(Sound.WIN2);
-		winsounds.add(Sound.WIN3);
-
 		voix = new SIVOXDevint();
 		voix = Preferences.getData().getVoice();
-		cursor = 0;
 	}
 
-	public void playSequence() {
-		for (KeySound ks : soundSequence) {
-			voix.playWav(ks.getSound().getUrl(), true);
-			System.out.println(ks.getSound().getUrl());
-		}
-	}
+//	public void playSequence() {
+//		for (KeySound ks : soundSequence) {
+//			voix.playWav(ks.getSound().getUrl(), true);
+//			System.out.println(ks.getSound().getUrl());
+//		}
+//	}
 
-	public void launchRound(int difficulty){
+	public void initRound(){
 		cursor = 0;
+		soundSequence.clear();
 		generateSequence(difficulty);
-		playSequence();
 	}
 	
 	public void generateSequence(int i) {
@@ -64,47 +59,80 @@ public class MemoryGame implements IGame {
 		}
 	}
 	
-	@Override
-	public void runGame() {
+	public void initGame(){
+		cursor = 0;
 		nbSounds = difficulty + 1;
 		cptround = 1;
-		voix.playWav("../ressources/sons/countdown321.wav", true);
-		launchRound(difficulty);
 	}
+	
+//	@Override
+//	public void runGame() {
+//		nbSounds = difficulty + 1;
+//		cptround = 1;
+//		launchRound(difficulty);
+//	}
 
-	@Override
-	public void endGame(boolean win){
-		Random rand = new Random();
-		
-		if(win){
-			
+//	@Override
+//	public void endGame(boolean win){
+//		Random rand = new Random();
+//		
+//		if(win){
+//			
+//			if(cptround % 2 == 0 && nbSounds < ((difficulty * difficulty) + 5))
+//				difficulty++;
+//			cptround++;
+//			try {
+//				Thread.sleep(500);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			int r = rand.nextInt(winsounds.size());
+//			voix.playWav(winsounds.get(r).getUrl(), true);
+//
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			// well done sound
+//			soundSequence.clear();
+//			launchRound(difficulty);
+//		}
+//	}
+	
+	public boolean checkEndOfRound(){
+		if(cursor == soundSequence.size()){
 			if(cptround % 2 == 0 && nbSounds < ((difficulty * difficulty) + 5))
 				difficulty++;
 			cptround++;
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			
-			int r = rand.nextInt(winsounds.size());
-			voix.playWav(winsounds.get(r).getUrl(), true);
-			voix.playWav(Sound.COUNTDOWN321.getUrl());
-
-
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			return true;
+//			try {
+//				Thread.sleep(500);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
 			
-			// well done sound
-			soundSequence.clear();
-			launchRound(difficulty);
+//			int r = rand.nextInt(winsounds.size());
+//			voix.playWav(winsounds.get(r).getUrl(), true);
+//
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			// well done sound
+//			
+//			launchRound(difficulty);
+		
 		}
+		return false;
 	}
 	
-	@Override
+/*	@Override
 	public void checkKeyCode(int keyCode) {
 		KeySound toCheck = null;
 
@@ -130,5 +158,28 @@ public class MemoryGame implements IGame {
 				cursor = 0;
 			}
 		}
+	}*/
+	
+	public boolean checkKeyPressed(KeySound toCheck){
+		//if (toCheck != null && !soundSequence.isEmpty()) {
+			if (toCheck.getSound().equals(soundSequence.get(cursor).getSound())) {
+				cursor++;
+//				if(cursor == soundSequence.size())
+//					endGame(true);
+				return true;
+			} else {
+				cursor = 0;
+				return false;			
+			}
+	//	}
+		//return false;
+	}
+	
+	public List<KeySound> getSoundSequence(){
+		return this.soundSequence;
+	}
+	
+	public int getCptround(){
+		return this.cptround;
 	}
 }

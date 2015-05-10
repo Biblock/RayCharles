@@ -8,17 +8,17 @@ import engine.Sound;
 public class DifficultyView extends MenuAbstrait {
 
 	private int difficulty;
-	private MenuAbstrait menu;
+	private int idGame;
 	
-	public DifficultyView(String title) {
+	public DifficultyView(String title, int idGame) {
 		super(title);
-		
-		difficulty = -1;
+		this.idGame = idGame;
+		difficulty = 1;
 	}
 	
 	@Override
 	protected String[] nomOptions() {
-		String[] noms = {"FACILE", "MOYEN", "DIFFICILE", "Retour"};
+		String[] noms = {"2 TOUCHES", "3 TOUCHES"};
 		return noms;
 	}
 
@@ -31,12 +31,16 @@ public class DifficultyView extends MenuAbstrait {
 			case 1 :
 				difficulty = 2;
 				break;
-			case 2 :
-				difficulty = 3;
-				break;
-			case 3 :
-				break;
 			default: System.err.println("action non définie");
+		}
+		
+		switch (idGame) {
+			case 1:
+				new GameViewMemory("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
+				break;
+			case 2:
+				new ViewMosquitoGame("WELCOME TO THE MOSQUITO", new MosquitoGame());
+				break;
 		}
 		
 		this.dispose();
@@ -52,13 +56,6 @@ public class DifficultyView extends MenuAbstrait {
 	protected String wavRegleJeu() {
 		// TODO SON TEMPORAIRE POUR EVITER LES EXCEPTIONS
 		return Sound.WIN1.getUrl();
-	}
-
-	/**
-	 * @return the difficulty
-	 */
-	public int getDifficulty() {
-		return difficulty;
 	}
 
 }

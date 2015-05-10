@@ -37,7 +37,6 @@ public class MosquitoGame implements IGame {
 		timer = new Timer(3000, new GameTimerListener());
 	}
 	
-	@Override
 	public void runGame() {
 		voix.playWav(Sound.COUNTDOWN321.getUrl(), true);
 		try {
@@ -51,7 +50,6 @@ public class MosquitoGame implements IGame {
 		launchRound();
 	}
 	
-	@Override
 	public void endGame(boolean win) {
 		
 		try {
@@ -79,7 +77,6 @@ public class MosquitoGame implements IGame {
 		}
 	}
 	
-	@Override
 	public void checkKeyCode(int keyCode) {		
 		if(keyCode == KeyEvent.VK_SPACE){
 			if(spaceCpt == -1)
