@@ -8,17 +8,17 @@ import java.awt.event.KeyListener;
 import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
 import engine.IGame;
+import engine.MosquitoGame;
 import engine.Sound;
 
 public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener {
 
-	private IGame game;
+	private MosquitoGame game;
 	private SIVOXDevint voix;
 	
-	public ViewMosquitoGame(String title, IGame game) {
+	public ViewMosquitoGame(String title, MosquitoGame game) {
 		super(title);
 		this.game = game;
-		this.addKeyListener(new RecognizedKeyListener());
 	}
 
 	@Override
@@ -55,37 +55,29 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	}
-	
+	}	
+
+	@Override
 	public void keyPressed(KeyEvent e) {
-    	super.keyPressed(e);
-    	if (e.getKeyCode()==KeyEvent.VK_F5){
-    	   	voix.playText("Vous venez d'appuyer sur EFFE 5");
-    	}
-    }
-	
-	class RecognizedKeyListener implements KeyListener {
+		super.keyPressed(e);
+		game.checkKeyCode(e.getKeyCode());
 
-		@Override
-		public void keyPressed(KeyEvent e) {
-			game.checkKeyCode(e.getKeyCode());
-	
-		}
+	}
 
 
-		@Override
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-
-		@Override
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+		
+	
 
 }
