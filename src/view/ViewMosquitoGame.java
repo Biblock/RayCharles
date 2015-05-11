@@ -23,13 +23,14 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 	private int spaceCpt;
 	private int points;
 	
-	public ViewMosquitoGame(String title) {
+	public ViewMosquitoGame(String title, int difficulty) {
 		super(title);
 		
 		usedSounds = new HashMap<Sound, Integer>();
 		usedSounds.put(Sound.BOING, 1);
 		usedSounds.put(Sound.POUET, 2);
-		usedSounds.put(Sound.METALCLANG, 3);
+		if(difficulty == 2)
+			usedSounds.put(Sound.METALCLANG, 3);
 		
 		spaceCpt = -1;
 		points = 0;

@@ -38,7 +38,7 @@ public class DifficultyView extends MenuAbstrait {
 				new GameViewMemory("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
 				break;
 			case 2:
-				new ViewMosquitoGame("WELCOME TO THE MOSQUITO");
+				new ViewMosquitoGame("WELCOME TO THE MOSQUITO", difficulty);
 				break;
 		}
 		
