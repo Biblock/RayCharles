@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import devintAPI.FenetreAbstraite;
 import t2s.SIVOXDevint;
@@ -223,7 +221,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		int r = rand.nextInt(winsounds.size());
 		voix.playWav(winsounds.get(r).getUrl());
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(2500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
