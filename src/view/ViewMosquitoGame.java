@@ -31,6 +31,7 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 	private int spaceCpt;
 	private int points;
 	
+	
 	public ViewMosquitoGame(String title, int difficulty) {
 		super(title);
 		
