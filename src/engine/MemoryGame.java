@@ -17,7 +17,8 @@ public class MemoryGame implements IGame {
 	private int nbSounds;
 	private int cptround;
 	private List<KeySound> usedKeys;
-	
+	private int lifeCpt;
+	private final int MAXLIFE = 3;
 	public MemoryGame(int difficulty) {
 
 		this.difficulty = difficulty;
@@ -32,7 +33,19 @@ public class MemoryGame implements IGame {
 		usedKeys.add(KeySound.DOWN);
 		usedKeys.add(KeySound.RIGHT);
 	}
-
+	
+	public int getLifeCpt() {
+		return lifeCpt;
+	}
+	
+	public int decreaseLifeCpt() {
+		if (lifeCpt <= 0) {
+			lifeCpt = 0;
+		} else {
+			lifeCpt--;
+		}
+		return lifeCpt;
+	}
 	public void initRound(){
 		cursor = 0;
 		soundSequence.clear();
@@ -54,6 +67,7 @@ public class MemoryGame implements IGame {
 		cursor = 0;
 		nbSounds = stage + 1;
 		cptround = 1;
+		lifeCpt = MAXLIFE;
 	}
 	
 	public boolean checkEndOfRound(){
@@ -68,14 +82,19 @@ public class MemoryGame implements IGame {
 		return false;
 	}
 	
-	public boolean checkKeyPressed(KeySound toCheck){
+	public int checkKeyPressed(KeySound toCheck){
 		if (toCheck.getSound().equals(soundSequence.get(cursor).getSound())) {
 			cursor++;
-
-			return true;
+			return 0;
 		} else {
 			cursor = 0;
-			return false;			
+			decreaseLifeCpt();
+			if (getLifeCpt() > 0) {
+				return 1;
+			} else {
+				return 2;
+			}
+					
 		}
 	}
 	
