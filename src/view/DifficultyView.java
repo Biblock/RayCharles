@@ -36,18 +36,18 @@ public class DifficultyView extends MenuAbstrait {
 				break;
 			default: System.err.println("action non définie");
 		}
-		
+
 		switch (idGame) {
 			case 1:
 				if (scoreIsSelected) 
-					new ScoreView("Score");
+					new ScoreView("Score", idGame);
 				else
 					new GameViewMemory("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
 				break;
 			case 2:
 				
 				if (scoreIsSelected) 
-					new ScoreView("Score");
+					new ScoreView("Score", idGame);
 				else
 					new ViewMosquitoGame("WELCOME TO THE MOSQUITO", difficulty);
 				break;
