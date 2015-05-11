@@ -2,7 +2,6 @@ package view;
 
 import devintAPI.MenuAbstrait;
 import engine.MemoryGame;
-import engine.MosquitoGame;
 import engine.Sound;
 
 public class DifficultyView extends MenuAbstrait {
@@ -39,7 +38,7 @@ public class DifficultyView extends MenuAbstrait {
 				new GameViewMemory("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
 				break;
 			case 2:
-				new ViewMosquitoGame("WELCOME TO THE MOSQUITO", new MosquitoGame());
+				new ViewMosquitoGame("WELCOME TO THE MOSQUITO", difficulty);
 				break;
 		}
 		

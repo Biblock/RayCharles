@@ -3,7 +3,6 @@ package view;
 import java.awt.event.KeyEvent;
 
 import engine.MemoryGame;
-import engine.MosquitoGame;
 import engine.Sound;
 import jeu.FenetreSimple;
 import devintAPI.MenuAbstrait;
