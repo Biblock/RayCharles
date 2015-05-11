@@ -19,6 +19,7 @@ public class MemoryGame implements IGame {
 	private List<KeySound> usedKeys;
 	private int lifeCpt;
 	private final int MAXLIFE = 3;
+	
 	public MemoryGame(int difficulty) {
 
 		this.difficulty = difficulty;
