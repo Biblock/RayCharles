@@ -56,10 +56,15 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
     protected void init() {
     	setLayout(new BorderLayout());
  
-    	String text = "Jean-Paul a gagné, voici les scores :\n";
-    	text += "Jean-Paul 20\n";
-       	text +="Hélène : 15\n";
-		text +="Catherine : 16\n\n";
+    	String text = "";
+
+     	HashMap<String, Integer> scores = Score.getScores();
+     	
+     	Set<String> joueurs = scores.keySet();
+     	
+		for (String joueur : joueurs){
+     		text += joueur + " : " + scores.get(joueur) + "\n";
+     	}   
 
      	JTextArea lb1 = new JTextArea (text); 
     	lb1.setLineWrap(true);
