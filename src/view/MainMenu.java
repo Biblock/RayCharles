@@ -3,9 +3,9 @@ package view;
 import java.awt.event.KeyEvent;
 
 import engine.MemoryGame;
-import engine.MosquitoGame;
 import engine.Sound;
 import jeu.FenetreSimple;
+import jeu.FichierScore;
 import devintAPI.MenuAbstrait;
 
 public class MainMenu extends MenuAbstrait {

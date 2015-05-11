@@ -2,7 +2,6 @@ package view;
 
 import devintAPI.MenuAbstrait;
 import engine.MemoryGame;
-import engine.MosquitoGame;
 import engine.Sound;
 
 public class DifficultyView extends MenuAbstrait {
@@ -18,12 +17,13 @@ public class DifficultyView extends MenuAbstrait {
 	
 	@Override
 	protected String[] nomOptions() {
-		String[] noms = {"2 TOUCHES", "3 TOUCHES"};
+		String[] noms = {"2 SONS", "3 SONS", "SCORES"};
 		return noms;
 	}
 
 	@Override
 	protected void lancerOption(int i) {
+		boolean scoreIsSelected = false;
 		switch (i){  
 			case 0 : 
 				difficulty = 1;
@@ -31,17 +31,28 @@ public class DifficultyView extends MenuAbstrait {
 			case 1 :
 				difficulty = 2;
 				break;
+			case 2 :
+				scoreIsSelected = true;
+				break;
 			default: System.err.println("action non définie");
 		}
 		
 		switch (idGame) {
 			case 1:
-				new GameViewMemory("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
+				if (scoreIsSelected) 
+					new ScoreView("Score");
+				else
+					new GameViewMemory("WELCOME TO THE MEMORY", new MemoryGame(difficulty));
 				break;
 			case 2:
-				new ViewMosquitoGame("WELCOME TO THE MOSQUITO", new MosquitoGame());
+				
+				if (scoreIsSelected) 
+					new ScoreView("Score");
+				else
+					new ViewMosquitoGame("WELCOME TO THE MOSQUITO", difficulty);
 				break;
 		}
+		scoreIsSelected = false;
 		
 		this.dispose();
 	}
