@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -136,12 +137,39 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 				voix.playWav(Sound.ESSAIE.getUrl());
 			} else if (state == 2) {
 				voix.playWav(Sound.FAIL.getUrl());
-				this.dispose();
+				endOfGame();
 				
 			}
 		}
 	}
 	
+	public void endOfGame() {
+		int position = game.isBestScore();
+		if (position > 0) {
+			String strPos = "";
+			switch (position) {
+			case 1:
+				strPos = "premier";
+				break;
+			case 2:
+				strPos = "deuxième";
+				break;
+			case 3: 
+				strPos = "troisième";
+				break;
+			case 4:
+				strPos = "quatrième";
+				break;
+			case 5: 
+				strPos = "cinquième";
+				break;
+			}
+			voix.playText("Vous avez battu un des meilleurs scores !");
+			voix.playText("Vous vous classez actuellement " + strPos);
+			voix.playText("Comment vous appelez-vous ?");
+			new AddScore(game.getScore());
+		}
+	}
 
 
 	private void visualPressKey(KeySound toCheck, int i, boolean b) {
@@ -198,7 +226,12 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 	
 	public void runRound(){
 		game.initRound();
-		voix.playWav(Sound.COUNTDOWN321.getUrl(), true);
+		voix.playWav(Sound.COUNTDOWN321.getUrl());
+		try {
+			Thread.sleep(2500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		playSequence();
 	}
 	
@@ -224,11 +257,31 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 	}
 	
 	public void playSequence() {
-		for (KeySound ks : game.getSoundSequence()) {
-			visualPressKey(ks, 0, true);
-			voix.playWav(ks.getSound().getUrl(), true);
-			//initImages();
-			System.out.println(ks.getSound().getUrl());
+		int count = 0;
+
+		for (final KeySound ks : game.getSoundSequence()) {
+
+			ActionListener visualPressKey = new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					visualPressKey(ks, 0, true);
+					voix.playWav(ks.getSound().getUrl());
+				}
+			};
+
+			ActionListener initImages = new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					initImages();
+				}
+			};
+			Timer t1 = new Timer(1000 * count, visualPressKey);
+			t1.setRepeats(false);
+			t1.start();
+			Timer t2 = new Timer(1000 * count + 250, initImages);
+			t2.setRepeats(false);
+			t2.start();
+			++count;
 		}
 	}
 }
