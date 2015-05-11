@@ -45,7 +45,7 @@ public class MosquitoGame implements IGame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("test");
+
 		timer.start();
 		launchRound();
 	}
@@ -83,7 +83,7 @@ public class MosquitoGame implements IGame {
 				runGame();
 			else{
 				spaceCpt++;
-				System.out.println(spaceCpt);
+				System.out.println("Cpt : "+spaceCpt);
 			}
 		}
 	}
