@@ -30,6 +30,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Set;
+
+import jeu.Score;
 
 /** Cette classe est un exemple d'utilisation d'un fichier
  * 
@@ -50,17 +54,17 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
     // définition de la méthode abstraite "init()"
     // initialise le frame 
     protected void init() {
-    	// BorderLayout, voir http://java.sun.com/docs/books/tutorial/uiswing/layout/border.html
     	setLayout(new BorderLayout());
  
-    	String text = "Jean-Paul a gagné, voici les scores :\n";
-    	text += "Jean-Paul 20\n";
-       	text +="Hélène : 15\n";
-		text +="Catherine : 16\n\n";
-    	text += "Cliquez sur le bouton du haut et vérifiez si le fichier a été créé\n";
-       	text += "Cliquez sur le bouton du bas pour lire les scores qui ont été sauvegardés\n\n";
-       	text += "Le code est dans jeu.Fichier.java\n";
-      	text += "Lisez le code de la méthode actionPerformed.";
+    	String text = "";
+
+     	HashMap<String, Integer> scores = Score.getScores();
+     	
+     	Set<String> joueurs = scores.keySet();
+     	
+		for (String joueur : joueurs){
+     		text += joueur + " : " + scores.get(joueur) + "\n";
+     	}   
 
      	JTextArea lb1 = new JTextArea (text); 
     	lb1.setLineWrap(true);
@@ -82,7 +86,7 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
      	this.add(lire,BorderLayout.SOUTH);
      	
    }
-
+    
     // lire la question si clic sur le bouton 
     public void actionPerformed(ActionEvent ae){
        	// toujours stopper la voix avant de parler
@@ -90,30 +94,19 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
     	// on récupère la source de l'évènement
      	Object source = ae.getSource();
      	
-    	// si c'est le bouton lire
-      	if (source.equals(lire)) {
-    		String chemin = ".." + File.separator + "ressources" + File.separator + "score.txt";
-    		// on lit le fichier de score et on fait dire chaque ligne par la synthèse vocale
-    		try {
-    			BufferedReader l = new BufferedReader(new FileReader(chemin));
-    			String line = l.readLine();
-    	   		while (line != null) {
-    	   			voix.playText(line);
-    	   			line = l.readLine();
-    	   			Thread.sleep(1000);
-    	   		}
-    			l.close();
-    		}
-    		catch (IOException e) {
-    			System.out.println("pb lecture fichier");
-    			e.printStackTrace();
-    		} catch (InterruptedException e) {
+     	HashMap<String, Integer> scores = Score.getScores();
+     	
+     	Set<String> joueurs = scores.keySet();
+     	
+     	for (String joueur : joueurs){
+     		voix.playText(joueur + " : " + scores.get(joueur));
+     		try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-    	}	
-
-    	
+     	}    	
     	// on redonne le focus au JFrame principal 
     	// (après un clic, le focus est sur le bouton)
     	this.requestFocus();

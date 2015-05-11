@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -8,6 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 import t2s.SIVOXDevint;
@@ -17,11 +22,15 @@ import engine.Sound;
 
 public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener {
 
+	private JLabel viewCpt;
+	private JLabel soundName;
+	
 	private Map<Sound, Integer> usedSounds;
 	private Timer timer;
 	private Sound playedSound;
 	private int spaceCpt;
 	private int points;
+	
 	
 	public ViewMosquitoGame(String title, int difficulty) {
 		super(title);
@@ -50,7 +59,17 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 
 	@Override
 	protected void init() {
+		this.setLayout(new GridLayout(2, 1));
 		
+		Font font = new Font("Georgia", Font.BOLD, 40);
+		
+		viewCpt = new JLabel("0", SwingConstants.CENTER);
+		viewCpt.setFont(font);
+		soundName = new JLabel("Son joué : ", SwingConstants.CENTER);
+		soundName.setFont(font);
+		
+		this.add(viewCpt);
+		this.add(soundName);
 	}
 
 	@Override
@@ -83,6 +102,7 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 				runGame();
 			else{
 				spaceCpt++;
+				viewCpt.setText(Integer.toString(spaceCpt));
 				System.out.println("Cpt : "+spaceCpt);
 			}
 		}
@@ -119,9 +139,11 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 		Random rand = new Random();
 		
 		spaceCpt = 0;
+		viewCpt.setText(Integer.toString(spaceCpt));
 		int r = rand.nextInt(usedSounds.size());
 		Object val[] = usedSounds.keySet().toArray();
 		playedSound = (Sound)val[r];
+		soundName.setText("Son joué : "+playedSound.name());
 		voix.playWav(playedSound.getUrl());
 		timer.restart();
 	}

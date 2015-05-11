@@ -5,14 +5,16 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 import devintAPI.FenetreAbstraite;
+import t2s.SIVOXDevint;
+import engine.IGame;
 import engine.KeySound;
 import engine.MemoryGame;
 import engine.Sound;
@@ -223,7 +225,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		game.initGame();
 		runRound();
 	}
-	
+
 	public void runRound(){
 		game.initRound();
 		voix.playWav(Sound.COUNTDOWN321.getUrl());
@@ -245,17 +247,16 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		}
 		
 		int r = rand.nextInt(winsounds.size());
-		voix.playWav(winsounds.get(r).getUrl(), true);
-		
+		voix.playWav(winsounds.get(r).getUrl());
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(2500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		
 		runRound();
 	}
-	
+
 	public void playSequence() {
 		int count = 0;
 
