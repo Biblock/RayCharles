@@ -14,7 +14,6 @@ import engine.Sound;
 public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener {
 
 	private MosquitoGame game;
-	private SIVOXDevint voix;
 	
 	public ViewMosquitoGame(String title, MosquitoGame game) {
 		super(title);

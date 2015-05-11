@@ -18,7 +18,7 @@ public class DifficultyView extends MenuAbstrait {
 	
 	@Override
 	protected String[] nomOptions() {
-		String[] noms = {"2 TOUCHES", "3 TOUCHES"};
+		String[] noms = {"2 SONS", "3 SONS"};
 		return noms;
 	}
 
