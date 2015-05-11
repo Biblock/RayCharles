@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,8 +60,12 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 	protected void init() {
 		this.setLayout(new GridLayout(2, 1));
 		
+		Font font = new Font("Georgia", Font.BOLD, 40);
+		
 		viewCpt = new JLabel("0", SwingConstants.CENTER);
+		viewCpt.setFont(font);
 		soundName = new JLabel("Son joué : ", SwingConstants.CENTER);
+		soundName.setFont(font);
 		
 		this.add(viewCpt);
 		this.add(soundName);
