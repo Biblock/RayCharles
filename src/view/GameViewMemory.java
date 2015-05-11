@@ -139,7 +139,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 				visualPressKey(toCheck, 1, false);
 				voix.playWav(Sound.FAIL.getUrl());
 			}
-		}		
+		}
 	}
 
 
@@ -226,7 +226,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		for (KeySound ks : game.getSoundSequence()) {
 			visualPressKey(ks, 0, true);
 			voix.playWav(ks.getSound().getUrl(), true);
-			initImages();
+			//initImages();
 			System.out.println(ks.getSound().getUrl());
 		}
 	}

@@ -10,7 +10,6 @@ import view.ViewMosquitoGame;
 import devintAPI.Preferences;
 
 public class MemoryGame implements IGame {
-	private static final String pathFolder = "../ressources/sons/";
 	private List<KeySound> soundSequence;
 	private int cursor;
 	private int stage;
@@ -19,8 +18,6 @@ public class MemoryGame implements IGame {
 	private int cptround;
 	private List<KeySound> usedKeys;
 	
-	private SIVOXDevint voix;
-
 	public MemoryGame(int difficulty) {
 
 		this.difficulty = difficulty;
@@ -34,9 +31,6 @@ public class MemoryGame implements IGame {
 		
 		usedKeys.add(KeySound.DOWN);
 		usedKeys.add(KeySound.RIGHT);
-		
-		voix = new SIVOXDevint();
-		voix = Preferences.getData().getVoice();
 	}
 
 	public void initRound(){
