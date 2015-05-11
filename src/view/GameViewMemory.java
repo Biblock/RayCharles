@@ -4,18 +4,14 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import devintAPI.FenetreAbstraite;
-import t2s.SIVOXDevint;
-import engine.IGame;
 import engine.KeySound;
 import engine.MemoryGame;
 import engine.Sound;
@@ -129,18 +125,23 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		if (toCheck != null && !game.getSoundSequence().isEmpty()) {
 			voix.stop();
 			voix.playWav(toCheck.getSound().getUrl());
-			if(game.checkKeyPressed(toCheck)){
+			int state = game.checkKeyPressed(toCheck);
+			if(state == 0){
 				visualPressKey(toCheck, 1, true);
-
 				if(game.checkEndOfRound()){
 					launchWinRound();
 				}
-			}else{
+			} else if (state == 1){
 				visualPressKey(toCheck, 1, false);
+				voix.playWav(Sound.ESSAIE.getUrl());
+			} else if (state == 2) {
 				voix.playWav(Sound.FAIL.getUrl());
+				this.dispose();
+				
 			}
 		}
 	}
+	
 
 
 	private void visualPressKey(KeySound toCheck, int i, boolean b) {

@@ -6,7 +6,7 @@ public enum Sound {
     METALCLANG("../ressources/sons/metalClang2.wav"),
     POUET("../ressources/sons/pouet.wav"),
     FAIL("../ressources/sons/gameover.wav"),
-
+    ESSAIE("../ressources/sons/essaie.wav"),
     WIN1("../ressources/sons/incredible.wav"),
     WIN2("../ressources/sons/cool.wav"),
     WIN3("../ressources/sons/unbelievable.wav"),
