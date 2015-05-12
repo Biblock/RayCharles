@@ -145,7 +145,6 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 				voix.playWav(Sound.FUNNYSLIP.getUrl());
 			} else if (state == 2) {
 				voix.playWav(Sound.FAIL.getUrl());
-				System.out.println("Hey je suis là");
 				endOfGame();
 				
 			}

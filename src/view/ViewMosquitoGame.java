@@ -10,11 +10,13 @@ import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
+import jeu.Score;
 import t2s.SIVOXDevint;
 import devintAPI.FenetreAbstraite;
 import engine.IGame;
@@ -30,11 +32,11 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 	private Sound playedSound;
 	private int spaceCpt;
 	private int points;
-	
+	private int difficulty;
 	
 	public ViewMosquitoGame(String title, int difficulty) {
 		super(title);
-		
+		this.difficulty = difficulty;
 		usedSounds = new HashMap<Sound, Integer>();
 		usedSounds.put(Sound.BOING, 1);
 		usedSounds.put(Sound.POUET, 2);
@@ -171,10 +173,51 @@ public class ViewMosquitoGame extends FenetreAbstraite implements ActionListener
 		}else{
 			voix.playWav(Sound.FAIL.getUrl(), true);
 			timer.stop();
-			voix.playShortText("Bien joué ! Votre score est de "+points + " points.");
+			int position = isBestScore();
+			System.out.println(position);
+			if (position > 0) {
+				String strPos = "";
+				switch (position) {
+				case 1:
+					strPos = "premier";
+					break;
+				case 2:
+					strPos = "deuxième";
+					break;
+				case 3: 
+					strPos = "troisième";
+					break;
+				case 4:
+					strPos = "quatrième";
+					break;
+				case 5: 
+					strPos = "cinquième";
+					break;
+				}
+				System.out.println(strPos);
+				voix.playText("Vous avez battu un des meilleurs scores !");
+				voix.playText("Vous vous classez actuellement " + strPos);
+				voix.playText("Comment vous appelez-vous ?");
+				new AddScore(2, difficulty, points);
+			}
+			dispose();
+		
 		}
 	}
 	
+	public int isBestScore() {
+		HashMap<String, Integer> allScores = Score.getScores(1, difficulty);
+		Set<String> set = allScores.keySet();
+		int cpt = 1;
+
+		for (String str : set) {
+			if (allScores.get(str) < points) {
+				return cpt;
+			}
+			cpt++;
+		}
+		return 0;
+	}
 	class GameTimerListener implements ActionListener{
 
 		@Override

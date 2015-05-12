@@ -74,7 +74,7 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
      	}
 		
      	joueurs = scores2.keySet();
-     	text += "3 SONS :\n";
+     	text += "\n3 SONS :\n";
 		for (String joueur : joueurs){
      		text += joueur + " -> " + scores2.get(joueur) + "\n";
      	}   
