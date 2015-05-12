@@ -171,6 +171,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 			voix.playText("Comment vous appelez-vous ?");
 			new AddScore(game.getScore());
 		}
+		System.exit(42);
 	}
 
 

@@ -21,19 +21,24 @@ public class AddScore extends JFrame implements ActionListener{
 		JPanel Pane = new JPanel(new GridLayout(1, 2));
 		Pane.add(name);
 		Pane.add(sendButton = nouveauBouton("Ajouter"));
+		this.setContentPane(Pane);
+		this.pack();
+
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-}
-private JButton nouveauBouton(String texte) {
-	JButton bouton = new JButton(texte);
-	bouton.setMargin(new Insets(0, 0, 0, 0));
-	bouton.setPreferredSize(new Dimension(90, 25));
-	bouton.addActionListener(this);
-	return bouton;
-}
-@Override
-public void actionPerformed(ActionEvent arg) {
-	if (arg.getSource().equals(sendButton)) {
-
+	private JButton nouveauBouton(String texte) {
+		JButton bouton = new JButton(texte);
+		bouton.setMargin(new Insets(0, 0, 0, 0));
+		bouton.setPreferredSize(new Dimension(90, 25));
+		bouton.addActionListener(this);
+		return bouton;
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg) {
+		if (arg.getSource().equals(sendButton)) {
+			String str = name.getText();
+			Score.addScore(name,score);
+		}
 	}
 }
