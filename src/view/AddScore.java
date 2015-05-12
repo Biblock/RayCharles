@@ -42,3 +42,4 @@ public class AddScore extends JFrame implements ActionListener{
 		}
 	}
 }
+

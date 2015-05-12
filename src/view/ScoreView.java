@@ -45,25 +45,38 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
 
 	// le bouton pour lire un fichier
 	private JButton lire;
+	private int idGame;
 
 	// appel au constructeur de la classe mère
-    public ScoreView(String title) {
+    public ScoreView(String title, int numGame) {
     	super(title);
+    	idGame = numGame;
+    	init2();
      }
 
+    protected void init(){
+    }
+    
     // définition de la méthode abstraite "init()"
     // initialise le frame 
-    protected void init() {
+    private void init2() {
     	setLayout(new BorderLayout());
  
     	String text = "";
+    	System.out.println(idGame);
+     	HashMap<String, Integer> scores1 = Score.getScores(idGame, 1);
+     	HashMap<String, Integer> scores2 = Score.getScores(idGame, 2);
 
-     	HashMap<String, Integer> scores = Score.getScores();
-     	
-     	Set<String> joueurs = scores.keySet();
-     	
+     	Set<String> joueurs = scores1.keySet();
+     	text += "2 SONS :\n";
 		for (String joueur : joueurs){
-     		text += joueur + " : " + scores.get(joueur) + "\n";
+     		text += joueur + " -> " + scores1.get(joueur) + "\n";
+     	}
+		
+     	joueurs = scores2.keySet();
+     	text += "3 SONS :\n";
+		for (String joueur : joueurs){
+     		text += joueur + " -> " + scores2.get(joueur) + "\n";
      	}   
 
      	JTextArea lb1 = new JTextArea (text); 
@@ -94,10 +107,11 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
     	// on récupère la source de l'évènement
      	Object source = ae.getSource();
      	
-     	HashMap<String, Integer> scores = Score.getScores();
+     	HashMap<String, Integer> scores = Score.getScores(idGame, 1);
      	
      	Set<String> joueurs = scores.keySet();
      	
+     	voix.playText("Avec deux touches.");
      	for (String joueur : joueurs){
      		voix.playText(joueur + " : " + scores.get(joueur));
      		try {
@@ -107,6 +121,19 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
 				e.printStackTrace();
 			}
      	}    	
+     	scores = Score.getScores(idGame, 2);
+     	joueurs = scores.keySet();
+     	
+     	voix.playText("Avec deux touches.");
+     	for (String joueur : joueurs){
+     		voix.playText(joueur + " : " + scores.get(joueur));
+     		try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+     	} 
     	// on redonne le focus au JFrame principal 
     	// (après un clic, le focus est sur le bouton)
     	this.requestFocus();
