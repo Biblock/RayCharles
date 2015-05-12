@@ -59,6 +59,11 @@ public final class Score {
 			content+= name +';'+score+'\n';
 		} else {
 			content += low+';'+scores.get(low)+'\n';
+			low = name +';'+score+'\n';
+			i++;
+		}
+		if (i < 5) {
+			content += low+';'+scores.get(low)+'\n';
 		}
 		
 		String chemin = ".." + File.separator + "ressources" + File.separator

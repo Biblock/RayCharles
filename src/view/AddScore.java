@@ -46,6 +46,7 @@ public class AddScore extends JFrame implements ActionListener{
 		if (arg.getSource().equals(sendButton)) {
 			String str = name.getText();
 			Score.addScore(numGame, difficulte, str,score);
+			dispose();
 		}
 	}
 }
