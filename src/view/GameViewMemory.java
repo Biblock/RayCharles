@@ -38,6 +38,9 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		winsounds.add(Sound.WIN1);
 		winsounds.add(Sound.WIN2);
 		winsounds.add(Sound.WIN3);
+		
+		if(game.getDifficulty() == 1)
+			keyLeftGame.setIcon(null);
 	}
 
 	@Override
@@ -78,6 +81,9 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		keyLeftUser.setIcon((new ImageIcon("../ressources/images/keyboard/BlueLeft.png")));
 		keyRightUser.setIcon((new ImageIcon("../ressources/images/keyboard/BlueRight.png")));
 		keyDownUser.setIcon((new ImageIcon("../ressources/images/keyboard/BlueDown.png")));
+		
+		if(game != null && game.getDifficulty() == 1)
+			keyLeftGame.setIcon(null);
 	}
 	
 	@Override
@@ -208,6 +214,9 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 			}
 			break;
 		}
+		
+		if(game.getDifficulty() == 1)
+			keyLeftGame.setIcon(null);
 	}
 
 	@Override
