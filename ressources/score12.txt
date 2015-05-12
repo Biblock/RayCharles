@@ -1,5 +1,4 @@
-Jean-Jacques;2
 Alex;19
-Nicolas;1
 Pierre;6
-Long;-10
+Jean-Jacques;2
+Hamtaro;2

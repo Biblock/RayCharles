@@ -136,9 +136,10 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 				}
 			} else if (state == 1){
 				visualPressKey(toCheck, 1, false);
-				voix.playWav(Sound.ESSAIE.getUrl());
+				voix.playWav(Sound.FUNNYSLIP.getUrl());
 			} else if (state == 2) {
 				voix.playWav(Sound.FAIL.getUrl());
+				System.out.println("Hey je suis là");
 				endOfGame();
 				
 			}
@@ -147,6 +148,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 	
 	public void endOfGame() {
 		int position = game.isBestScore();
+		System.out.println(position);
 		if (position > 0) {
 			String strPos = "";
 			switch (position) {
@@ -166,12 +168,13 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 				strPos = "cinquième";
 				break;
 			}
+			System.out.println(strPos);
 			voix.playText("Vous avez battu un des meilleurs scores !");
 			voix.playText("Vous vous classez actuellement " + strPos);
 			voix.playText("Comment vous appelez-vous ?");
-			new AddScore(game.getScore());
+			new AddScore(1, game.getDifficulty(), game.getScore());
 		}
-		System.exit(42);
+		dispose();
 	}
 
 

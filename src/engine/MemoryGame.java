@@ -104,7 +104,7 @@ public class MemoryGame implements IGame {
 	}
 	
 	public int isBestScore() {
-		HashMap<String, Integer> allScores = Score.getScores();
+		HashMap<String, Integer> allScores = Score.getScores(1, difficulty);
 		Set<String> set = allScores.keySet();
 		int cpt = 1;
 
