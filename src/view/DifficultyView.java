@@ -60,13 +60,13 @@ public class DifficultyView extends MenuAbstrait {
 	@Override
 	protected String wavAccueil() {
 		// TODO SON TEMPORAIRE POUR EVITER LES EXCEPTIONS
-		return Sound.WIN2.getUrl();
+		return Sound.CHOIXDIF.getUrl();
 	}
 
 	@Override
 	protected String wavRegleJeu() {
 		// TODO SON TEMPORAIRE POUR EVITER LES EXCEPTIONS
-		return Sound.WIN1.getUrl();
+		return Sound.CHOIXDIF.getUrl();
 	}
 
 }
