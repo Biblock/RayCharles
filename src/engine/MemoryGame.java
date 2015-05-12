@@ -5,9 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import t2s.SIVOXDevint;
-import view.ViewMosquitoGame;
-import devintAPI.Preferences;
+
+import jeu.Score;
 
 
 public class MemoryGame implements IGame {
@@ -105,9 +104,10 @@ public class MemoryGame implements IGame {
 	}
 	
 	public int isBestScore() {
-		HashMap<String, Integer> allScores = Score.getAllScores();
+		HashMap<String, Integer> allScores = Score.getScores();
 		Set<String> set = allScores.keySet();
 		int cpt = 1;
+
 		for (String str : set) {
 			if (allScores.get(str) < getScore()) {
 				return cpt;
