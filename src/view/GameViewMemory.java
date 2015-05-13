@@ -128,7 +128,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 				}
 			} else if (state == 1){
 				visualPressKey(toCheck, false);
-				voix.playWav(Sound.FUNNYSLIP.getUrl());
+				voix.playWav(Sound.ESSAIE.getUrl());
 			} else if (state == 2) {
 				voix.playWav(Sound.FAIL.getUrl());
 				endOfGame();
