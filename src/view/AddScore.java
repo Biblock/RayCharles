@@ -29,6 +29,8 @@ public class AddScore extends JFrame implements ActionListener{
 		Pane.add(name);
 		Pane.add(sendButton = nouveauBouton("Ajouter"));
 		this.setContentPane(Pane);
+		this.setMinimumSize(new Dimension(400, 200));
+		this.setLocationRelativeTo(null);
 		this.pack();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
