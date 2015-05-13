@@ -12,7 +12,7 @@ import engine.MemoryGame;
 public class LancementJeu {
 
     public static void main(String args[]) {
-        MainMenu menu = new MainMenu("MEMORY GAME");
+        MainMenu menu = new MainMenu("MOSQUITORY!");
 //        MenuJeu mj = new MenuJeu("");
     }
 }
