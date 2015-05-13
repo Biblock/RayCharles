@@ -49,7 +49,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 	@Override
 	protected void init() {
 		
-		this.setLayout(new GridLayout(1, 4));
+		this.setLayout(new GridLayout(1, 3));
 		
 		keyLeftGame = new JLabel();
 		keyRightGame = new JLabel();
@@ -57,7 +57,6 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		
 		initImages();
 		
-		this.add(new JLabel("Ordinateur : "));
 		this.add(keyLeftGame);
 		this.add(keyDownGame);
 		this.add(keyRightGame);

@@ -150,12 +150,12 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
 
 	// renvoie le fichier wave contenant le message d'accueil
 	protected  String wavAccueil() {
-		return Sound.SCORES.toString();
+		return Sound.SCORES.getUrl();
 	}
 	
 	// renvoie le fichier wave contenant la règle du jeu
 	protected  String wavRegleJeu() {
-		return Sound.SCORES.toString();
+		return Sound.SCORES.getUrl();
 	}
 	
 	// renvoie le fichier wave contenant la règle du jeu
