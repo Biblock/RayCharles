@@ -25,9 +25,6 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 	private JLabel keyLeftGame;
 	private JLabel keyRightGame;
 	private JLabel keyDownGame;
-	private JLabel keyLeftUser;
-	private JLabel keyRightUser;
-	private JLabel keyDownUser;
 
 	public GameViewMemory(String title, MemoryGame game) {
 		super(title);
@@ -52,14 +49,11 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 	@Override
 	protected void init() {
 		
-		this.setLayout(new GridLayout(2, 4));
+		this.setLayout(new GridLayout(1, 4));
 		
 		keyLeftGame = new JLabel();
 		keyRightGame = new JLabel();
 		keyDownGame = new JLabel();
-		keyLeftUser = new JLabel();
-		keyRightUser = new JLabel();
-		keyDownUser = new JLabel();
 		
 		initImages();
 		
@@ -67,20 +61,12 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		this.add(keyLeftGame);
 		this.add(keyDownGame);
 		this.add(keyRightGame);
-		
-		this.add(new JLabel("Joueur : "));
-		this.add(keyLeftUser);
-		this.add(keyDownUser);
-		this.add(keyRightUser);
 	}
 
 	private void initImages(){
 		keyLeftGame.setIcon((new ImageIcon("../ressources/images/keyboard/BlueLeft.png")));
 		keyRightGame.setIcon((new ImageIcon("../ressources/images/keyboard/BlueRight.png")));
 		keyDownGame.setIcon((new ImageIcon("../ressources/images/keyboard/BlueDown.png")));
-		keyLeftUser.setIcon((new ImageIcon("../ressources/images/keyboard/BlueLeft.png")));
-		keyRightUser.setIcon((new ImageIcon("../ressources/images/keyboard/BlueRight.png")));
-		keyDownUser.setIcon((new ImageIcon("../ressources/images/keyboard/BlueDown.png")));
 		
 		if(game != null && game.getDifficulty() == 1)
 			keyLeftGame.setIcon(null);
@@ -136,13 +122,13 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 			voix.playWav(toCheck.getSound().getUrl());
 			int state = game.checkKeyPressed(toCheck);
 			if(state == 0){
-				visualPressKey(toCheck, 1, true);
+				visualPressKey(toCheck, true);
 				if(game.checkEndOfRound()){
 					launchWinRound();
 				}
 			} else if (state == 1){
-				visualPressKey(toCheck, 1, false);
-				voix.playWav(Sound.FUNNYSLIP.getUrl());
+				visualPressKey(toCheck, false);
+				voix.playWav(Sound.ESSAIE.getUrl());
 			} else if (state == 2) {
 				voix.playWav(Sound.FAIL.getUrl());
 				endOfGame();
@@ -183,7 +169,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 	}
 
 
-	private void visualPressKey(KeySound toCheck, int i, boolean b) {
+	private void visualPressKey(KeySound toCheck, boolean b) {
 		String color;
 		if(b)
 			color = "Green";
@@ -192,28 +178,16 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 		
 		switch (toCheck) {
 		case LEFT:
-			if(i == 0){
-				keyLeftGame.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Left.png")));
-			}
-			else if (i == 1){
-				keyLeftUser.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Left.png")));
-			}
+			keyLeftGame.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Left.png")));
+			
 			break;
 		case RIGHT:
-			if(i == 0){
-				keyRightGame.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Right.png")));
-			}
-			else if (i == 1){
-				keyRightUser.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Right.png")));
-			}
+			keyRightGame.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Right.png")));
+			
 			break;
 		case DOWN:
-			if(i == 0){
-				keyDownGame.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Down.png")));
-			}
-			else if (i == 1){
-				keyDownUser.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Down.png")));
-			}
+			keyDownGame.setIcon((new ImageIcon("../ressources/images/keyboard/"+color+"Down.png")));
+			
 			break;
 		}
 		
@@ -277,7 +251,7 @@ public class GameViewMemory extends FenetreAbstraite implements ActionListener {
 			ActionListener visualPressKey = new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					visualPressKey(ks, 0, true);
+					visualPressKey(ks, true);
 					voix.playWav(ks.getSound().getUrl());
 				}
 			};
