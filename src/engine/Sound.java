@@ -12,7 +12,8 @@ public enum Sound {
     WIN3("../ressources/sons/unbelievable.wav"),
     CHOIXDIF("../ressources/sons/ChoixDifficulte(Damien).wav"),
     COUNTDOWN321("../ressources/sons/countdown321.wav"),
-
+    SCORES("../ressources/sons/scores.wav"),
+    
     LANCEMENT("../ressources/sons/LancementDuJeu(Damien).wav"),
     AIDEMEMORY("../ressources/sons/RegleDuJeuMemory(Damien).wav"),
 

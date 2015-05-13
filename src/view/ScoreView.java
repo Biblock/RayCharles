@@ -22,6 +22,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 import devintAPI.FenetreAbstraite;
+import engine.Sound;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -149,12 +150,12 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
 
 	// renvoie le fichier wave contenant le message d'accueil
 	protected  String wavAccueil() {
-		return "../ressources/sons/accueilFichier.wav";
+		return Sound.SCORES.toString();
 	}
 	
 	// renvoie le fichier wave contenant la règle du jeu
 	protected  String wavRegleJeu() {
-		return "../ressources/sons/accueilFichier.wav";
+		return Sound.SCORES.toString();
 	}
 	
 	// renvoie le fichier wave contenant la règle du jeu
