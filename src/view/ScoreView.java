@@ -112,9 +112,9 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
      	
      	Set<String> joueurs = scores.keySet();
      	
-     	voix.playText("Avec deux touches.");
+     	voix.playText("Avec deux touches.", true);
      	for (String joueur : joueurs){
-     		voix.playText(joueur + " : " + scores.get(joueur));
+     		voix.playText(joueur + " : " + scores.get(joueur), true);
      		try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -125,9 +125,9 @@ public class ScoreView extends FenetreAbstraite implements ActionListener{
      	scores = Score.getScores(idGame, 2);
      	joueurs = scores.keySet();
      	
-     	voix.playText("Avec deux touches.");
+     	voix.playText("Avec deux touches.", true);
      	for (String joueur : joueurs){
-     		voix.playText(joueur + " : " + scores.get(joueur));
+     		voix.playText(joueur + " : " + scores.get(joueur), true);
      		try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

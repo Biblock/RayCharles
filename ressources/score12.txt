@@ -1,4 +1,5 @@
-Alex;19
-Pierre;6
-Jean-Jacques;2
-Hamtaro;2
+Score0;0
+Score1;0
+Score2;0
+Score3;0
+Score4;0

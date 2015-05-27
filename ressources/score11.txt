@@ -1,5 +1,5 @@
-Alex;19
-Pierre;6
-;3
-Nicolas;15
-ME;90
+Score0;0
+Score1;0
+Score2;0
+Score3;0
+Score4;0
